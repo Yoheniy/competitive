@@ -1,9 +1,16 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        l=[i for i in range(len(nums)+1)]
-        for j in nums:
-            l.remove(j)
-        return l[0]
+        total=((len(nums)+1)*len(nums))//2
+        res=0
+        for i in nums:
+            res+=i
+        if(res==nums):
+            return 0
+        else:
+            return total-res
+
+
+        
             
             
         
