@@ -1,20 +1,39 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        map1=Counter(p)
-        l,r=0,0
-        ans=[]
-        while r<len(s):
-            
-            temp=s[l:r+len(p)]
-            map2=Counter(temp)
-            print(map2)
-            if map1==map2:
-                ans.append(l)
-                
-            r+=1
-            l+=1
-
-            
+        '''ans = []
+        if len(s)<len(p):
+            return ans
         
+        palp = [0]*26
+        for c in p:
+            palp[ord(c)-97]+=1
+        
+        win = len(p)
+
+        salp = [0]*26
+        
+        for i in range(len(s)):
+            salp[ord(s[i])-97]+=1
+            if (i>=win):
+                salp[ord(s[i-win])-97]-=1
+            if (salp==palp):
+                ans.append(i-win+1)
+            
+                
+        return ans'''
+        pcounter=Counter(p)
+        scounter=Counter()
+        left=0
+        ans=[]
+        for right in range(len(s)):
+            scounter[s[right]]+=1
+            while right-left>=len(p):
+                scounter[s[left]]-=1
+                left+=1
+            if scounter==pcounter:
+                ans.append(left)
         return ans
+
+
+
         
