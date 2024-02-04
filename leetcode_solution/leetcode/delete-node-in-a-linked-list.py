@@ -11,6 +11,9 @@ class Solution:
         :rtype: void Do not return anything, modify node in-place instead.
         """
         #we have to modify the the given node to be deleted with the next value of node and link with the next of the nextnode 
-        nextNode=node.next
+        node.val=node.next.val
+        node.next=node.next.next
+
+        '''nextNode=node.next
         node.val=nextNode.val
-        node.next=nextNode.next
+        node.next=nextNode.next'''
